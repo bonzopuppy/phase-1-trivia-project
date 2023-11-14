@@ -1,0 +1,121 @@
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+    padding: 0;
+    margin: 0;
+  }
+
+  .container {
+    display: flex;
+  }
+
+  #questionColumn {
+    width: 33%;
+    overflow-y: auto;
+    border-radius: 8px;
+  }
+
+  #contentColumn {
+    width: 33%;
+    border-radius: 8px;
+  }
+/* center the score box, make it 110px high; the label inside should be right aligned and the p and span should be centered */
+  .score-box {
+      width: 60%; 
+      height: 110px;
+      background-color: #f0f0f0;
+      border: 1px solid #d0d0d0; 
+      margin: 10px auto; 
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 10px;
+      box-sizing: border-box;
+      border-radius: 8px;
+    }
+  
+  table {
+      margin: 10px;
+      width: auto;
+  }
+
+  table td:first-child {
+      text-align: right;
+      padding-right: 10px;
+  }
+
+  table tr {
+      line-height: 1.5;
+  }
+
+
+  #scoreColumn {
+  width: 33%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 8px;
+  }
+  
+
+  .question {
+    margin-bottom: 20px;
+    cursor: pointer;
+    padding: 5px;
+  }
+
+  .question:hover {
+    background-color: #f0f0f0;
+  }
+
+  .inactive {
+    color: #999;
+    pointer-events: none;
+    background-color: #f0f0f0;
+  }
+
+  .column {
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    height: 90vh;
+  }
+
+  #trivia {
+    display: none;
+  }
+
+  h1 {
+    text-align: center;
+    margin-top: 25px;
+  }
+
+  h2 {
+    text-align: center;
+    margin-bottom: 30px;
+  }
+
+  .button {
+      display: inline-flex;
+      height: 48px;
+      margin-top: 25px;
+      padding: 13px 32px;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      flex-shrink: 0;
+      border-radius: 8px;
+      background: #1F1C30; 
+      border: none;
+      color: #FFF;
+      font-size: 18px;
+      font-style: normal;
+      font-weight: 500;
+      line-height: 150%; /* 30px */      
+  }
+
+  .answers {
+      font-weight: bold;
+      font-size: 1.2em;
+  }
