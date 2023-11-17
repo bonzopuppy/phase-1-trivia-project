@@ -1,121 +1,335 @@
-
 body {
-    font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-    padding: 0;
-    margin: 0;
-  }
+  font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+  padding: 0;
+  margin: 0;
+}
 
-  .container {
-    display: flex;
-  }
+.container {
+  display: flex;
+  margin: 8px;
+}
 
-  #questionColumn {
-    width: 33%;
-    overflow-y: auto;
-    border-radius: 8px;
-  }
+#questionColumn {
+  width: 33%;
+  overflow-y: auto;
+  border-radius: 8px;
+}
 
-  #contentColumn {
-    width: 33%;
-    border-radius: 8px;
-  }
+#contentColumn {
+  width: 33%;
+  border-radius: 8px;
+}
+
 /* center the score box, make it 110px high; the label inside should be right aligned and the p and span should be centered */
-  .score-box {
-      width: 60%; 
-      height: 110px;
-      background-color: #f0f0f0;
-      border: 1px solid #d0d0d0; 
-      margin: 10px auto; 
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-      padding: 10px;
-      box-sizing: border-box;
-      border-radius: 8px;
-    }
-  
-  table {
-      margin: 10px;
-      width: auto;
-  }
+.score-box {
+  width: 60%;
+  height: 110px;
+  background-color: #f0f0f0;
+  border: 1px solid #d0d0d0;
+  margin: 22px auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  box-sizing: border-box;
+  border-radius: 8px;
+}
 
-  table td:first-child {
-      text-align: right;
-      padding-right: 10px;
-  }
+table {
+  margin: 10px;
+  width: auto;
+}
 
-  table tr {
-      line-height: 1.5;
-  }
+table td:first-child {
+  text-align: right;
+  padding-right: 10px;
+}
+
+table tr {
+  line-height: 1.5;
+}
+
+.default-message {
+  margin-top: 95px;
+  color: #858282;
+  text-align: center;
+  font-family: 'San Francisco Text', sans-serif;
+  font-size: 18px;
+  font-style: italic;
+  font-weight: 400;
+  line-height: normal;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.select-next-prompt {
+  margin-top: 25px;
+  color: #858282;
+  text-align: center;
+  font-family: 'San Francisco Text', sans-serif;
+  font-size: 18px;
+  font-style: italic;
+  font-weight: 400;
+  line-height: normal;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.ready-for-more-prompt {
+  color: #858282;
+  text-align: center;
+  font-family: 'San Francisco Text', sans-serif;
+  font-size: 18px;
+  font-style: italic;
+  font-weight: 400;
+  line-height: normal;
+}
 
 
-  #scoreColumn {
+.answer-item,
+.correct-answer.revealed,
+.wrong-answer.revealed {
+  padding: 8px 30px 8px 8px;
+}
+
+.answer-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+  position: relative;
+  border: 1px solid transparent;
+  transition: border 0.3s ease;
+}
+
+.correct-answer,
+.wrong-answer {
+  border: 1px solid transparent;
+}
+
+.checkmark,
+.crossmark {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.selected-answer {
+  border: 1px solid #1F1C30;
+  border-radius: 8px;
+}
+
+.correct-answer.revealed {
+  border: 1px solid green;
+  border-radius: 8px;
+  background-image: url('assets/CheckMark.png');
+  background-size: 18px 18px;
+  background-position: right 10px center;
+  background-repeat: no-repeat;
+}
+
+.wrong-answer.revealed {
+  border: 1px solid red;
+  border-radius: 8px;
+  background-image: url('assets/Xmark.png');
+  background-size: 18px 18px;
+  background-position: right 10px center;
+  background-repeat: no-repeat;
+}
+
+.correct-answer.revealed {
+  background-image: url('assets/CheckMark.png');
+}
+
+.incorrect-answer.revealed {
+  background-image: url('assets/Xmark.png');
+}
+
+/* Style for correct answer's radio button when the answer is revealed */
+.correct-answer.revealed input[type="radio"] {
+  background-color: green;
+  border-color: green;
+}
+
+/* Style for wrong answer's radio button when the answer is revealed */
+.wrong-answer.revealed input[type="radio"] {
+  background-color: red;
+  border-color: red;
+}
+
+#scoreColumn {
   width: 33%;
   display: flex;
   flex-direction: column;
   align-items: center;
   border-radius: 8px;
-  }
-  
+}
 
-  .question {
-    margin-bottom: 20px;
-    cursor: pointer;
-    padding: 5px;
-  }
+.score-and-button-container {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
 
-  .question:hover {
-    background-color: #f0f0f0;
-  }
+.ready-for-more-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+}
 
-  .inactive {
-    color: #999;
-    pointer-events: none;
-    background-color: #f0f0f0;
-  }
+.question,
+.question:hover,
+.inactive {
+  box-sizing: border-box;
+}
 
-  .column {
-    margin: 10px;
-    padding: 10px;
-    border: 1px solid #ccc;
-    height: 90vh;
-  }
+.question {
+  margin-bottom: 8px;
+  padding: 12px 8px;
+  cursor: pointer;
+  line-height: 1.4;
+}
 
-  #trivia {
-    display: none;
-  }
+.question:hover,
+.inactive,
+.active {
+  background-color: #f0f0f0;
+  border-radius: 8px;
+}
 
-  h1 {
-    text-align: center;
-    margin-top: 25px;
-  }
+.inactive {
+  color: #999;
+  pointer-events: none;
+  background-color: #f0f0f0;
+}
 
-  h2 {
-    text-align: center;
-    margin-bottom: 30px;
-  }
+.column {
+  margin: 10px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  height: 90vh;
+}
 
-  .button {
-      display: inline-flex;
-      height: 48px;
-      margin-top: 25px;
-      padding: 13px 32px;
-      justify-content: center;
-      align-items: center;
-      gap: 10px;
-      flex-shrink: 0;
-      border-radius: 8px;
-      background: #1F1C30; 
-      border: none;
-      color: #FFF;
-      font-size: 18px;
-      font-style: normal;
-      font-weight: 500;
-      line-height: 150%; /* 30px */      
-  }
+#trivia {
+  display: none;
+}
 
-  .answers {
-      font-weight: bold;
-      font-size: 1.2em;
-  }
+h1 {
+  text-align: center;
+  margin-top: 25px;
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.button {
+  display: inline-flex;
+  height: 48px;
+  margin-top: 20px;
+  padding: 13px 32px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+  border-radius: 8px;
+  background: #1F1C30;
+  border: none;
+  color: #FFF;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 150%;
+  cursor: pointer;
+  /* 30px */
+}
+
+.button.correct {
+  background-color: white;
+  color: #049313;
+  border: 1px solid #049313;
+  display: flex;
+  width: 205px;
+  height: 48px;
+  padding: 13px 32px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+  border-radius: 8px;
+
+}
+
+.button.wrong {
+  background-color: white; 
+  color: #FC1212;
+  border: 1px solid #FC1212;
+  display: flex;
+  width: 205px;
+  height: 48px;
+  padding: 13px 32px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+  border-radius: 8px;
+  border: 1px solid #FC1212;
+}
+
+.answers {
+  font-weight: bold;
+  font-size: 1.2em;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  /* Ensures the container takes the full width */
+}
+
+input[type="radio"] {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  width: 18px; /* Width of the custom radio button */
+  height: 18px; /* Height of the custom radio button */
+  outline: none;
+  border: 1px solid black; /* Border color */
+  border-radius: 50%;
+  cursor: pointer;
+  transform: translateY(-1px);
+  transition: background-color 0.2s, border-color 0.2s;
+}
+
+/* Style for when the radio button is checked */
+input[type="radio"]:checked {
+  background-color: black;
+  border-color: black;
+}
+
+/* Custom styles for correct and wrong answers */
+.correct-answer input[type="radio"]:checked {
+  background-color: green;
+  border-color: green;
+}
+
+.wrong-answer input[type="radio"]:checked {
+  background-color: red;
+  border-color: red;
+}
+
+#trivia {
+  margin-top: 34px;
+}
